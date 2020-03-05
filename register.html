@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ploof-Top</title>
+
+    <!-- Bootstrap Depedencies -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        .background {
+            background-image: url("assets/img/laptop-bckg.jpg");
+            height: 100%;
+            background-position: center;
+
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .form-wrapper {
+            display: grid;
+            margin-top: 2%;
+        }
+
+        .form-wrapper #input-label {
+            margin-top: 3%;
+        }
+
+        input {
+            border: 0;
+            outline: 0;
+            background: transparent;
+            border-bottom: 1px solid white;
+            color: rgb(184, 184, 184);
+        }
+
+        /* Tablet Screen */
+        @media screen and (min-width: 768px) and (max-width: 1023px) {
+            .login-back {
+                width: 45%;
+                height: 100%;
+                padding: 3%;
+
+                position: absolute;
+                top: 0;
+                text-align: left;
+                color: white;
+
+                background-color: rgba(82, 87, 107, 0.7);
+            }
+        }
+
+        /* Laptop and Desktop */
+        @media screen and (min-width: 1024px) {
+            .login-back {
+                width: 33%;
+                height: 100%;
+                padding: 3%;
+
+                position: absolute;
+                top: 0;
+                text-align: left;
+                color: white;
+
+                background-color: rgba(82, 87, 107, 0.7);
+            }
+        }
+
+        /* Handheld */
+        @media screen and (max-width: 767px) {
+            .login-back {
+                width: 100%;
+                height: 100%;
+                padding: 4%;
+
+                position: absolute;
+                top: 0;
+                text-align: left;
+                color: white;
+
+                background-color: rgba(82, 87, 107, 0.7);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="background"></div>
+
+    <div class="d-flex justify-content-center login-wrapper">
+        <div class="container-fluid login-back">
+            <h2>REGISTER</h2>
+
+            <div class="form-wrapper">
+                <label for="firstName" id="input-label">First Name</label>
+                <input type="text" id="firstName" placeholder="Insert your first name here" required>
+
+                <label for="lastName" id="input-label">Last Name</label>
+                <input type="text" id="lastName" placeholder="Insert your last name here" required>
+
+                <label for="emailIn" id="input-label">Email</label>
+                <input type="email" id="emailIn" placeholder="Insert your email here" required>
+
+                <label for="passwordIn" id="input-label">Password</label>
+                <input type="password" id="passwordIn" placeholder="Insert your password here" required>
+
+                <button type="button" class="btn btn-light" style="margin-top: 5%;">CREATE ACCOUNT</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Depedencies -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
