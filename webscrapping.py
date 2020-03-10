@@ -97,7 +97,7 @@ lastest_array[0]
 
 with open('datanews.json') as json_file: 
     try:
-        data = json.load(json_file)
+        data = json.dump(json_file)
         data.update(lastest_array)
     
         write_json(data)

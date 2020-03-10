@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[9]:
+# In[1]:
 
 
 import json
@@ -10,7 +10,7 @@ import datetime
 from bs4 import BeautifulSoup
 
 
-# In[10]:
+# In[2]:
 
 
 page = requests.get("https://www.republika.co.id")
@@ -18,7 +18,7 @@ obj = BeautifulSoup(page.text, 'html.parser')
 current = datetime.datetime.now()
 
 
-# In[12]:
+# In[3]:
 
 
 list = []
@@ -35,6 +35,12 @@ for terkini in obj.find_all('div', class_='teaser_conten1'):
 
 with open("datanews.json", "w") as json_file:
     json.dump(list, json_file)
+
+
+# In[ ]:
+
+
+
 
 
 # In[ ]:
