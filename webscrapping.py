@@ -1,0 +1,112 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[13]:
+
+
+from bs4 import BeautifulSoup
+import requests
+import time
+import re
+import json
+from datetime import datetime
+
+
+# In[15]:
+
+
+web = requests.get("https://republika.co.id/")
+soup = BeautifulSoup(web.content, 'html.parser')
+
+
+# In[16]:
+
+
+headlines = soup.find_all('p', {"class": "link-headline"})
+
+print("Main Headlines :")
+for head in headlines:
+    print(head.text)
+
+
+# In[4]:
+
+
+soup.title.text
+
+
+# In[17]:
+
+
+def getPublicationTime(url):
+    req = requests.get(url)
+    sup = BeautifulSoup(req.content, 'html.parser')
+    
+    raw_time = sup.find('div', {"class": "date_detail"})
+    raw_time = raw_time.text.replace('WIB', '')
+    raw_time = re.sub(' +', ' ', raw_time)
+    raw_time = raw_time.strip()
+#     time = datetime.strptime(raw_time.strip(), "%A %d %b %Y %H:%M")
+    return raw_time
+
+
+# In[18]:
+
+
+def write_json(data, filename='datanews.json'): 
+    with open(filename,'w') as f: 
+        json.dump(data, f, indent=4) 
+
+
+# In[20]:
+
+
+lastest = soup.find_all('div', {"class": "teaser_conten1_center"})
+lastest_array = []
+
+print("Lastest news :")
+for last in lastest:
+    if last.find('div', {"class": "clear"}) != None:
+        continue
+    
+    print("Kategori\t: " + last.find('h1').find('a').text)
+    print("Judul\t\t: " + last.find('h2').text)
+    print("Waktu Scrapping\t: " + time.strftime("%b %d %Y %H:%M:%S"))
+    
+    time_pub = getPublicationTime(last.find('h2').find('a').get('href'))
+    print("Waktu Publikasi\t: " + time_pub)
+    
+    x = {
+        "categories": str(last.find('h1').find('a').text),
+        "title": str(last.find('h2').text),
+        "scrapped_time": str(time.strftime("%b %d %Y %H:%M:%S")),
+        "published_time": str(time_pub)
+    }
+    
+    lastest_array.append(x)
+
+
+# In[21]:
+
+
+lastest_array[0]
+
+
+# In[24]:
+
+
+with open('datanews.json') as json_file: 
+    try:
+        data = json.load(json_file)
+        data.update(lastest_array)
+    
+        write_json(data)
+    except:
+        write_json(lastest_array)
+
+
+# In[ ]:
+
+
+
+
