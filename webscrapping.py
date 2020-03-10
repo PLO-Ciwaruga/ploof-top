@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[13]:
+# In[1]:
 
 
 from bs4 import BeautifulSoup
@@ -12,14 +12,14 @@ import json
 from datetime import datetime
 
 
-# In[15]:
+# In[2]:
 
 
 web = requests.get("https://republika.co.id/")
 soup = BeautifulSoup(web.content, 'html.parser')
 
 
-# In[16]:
+# In[3]:
 
 
 headlines = soup.find_all('p', {"class": "link-headline"})
@@ -35,7 +35,7 @@ for head in headlines:
 soup.title.text
 
 
-# In[17]:
+# In[5]:
 
 
 def getPublicationTime(url):
@@ -50,7 +50,7 @@ def getPublicationTime(url):
     return raw_time
 
 
-# In[18]:
+# In[6]:
 
 
 def write_json(data, filename='datanews.json'): 
@@ -58,7 +58,7 @@ def write_json(data, filename='datanews.json'):
         json.dump(data, f, indent=4) 
 
 
-# In[20]:
+# In[7]:
 
 
 lastest = soup.find_all('div', {"class": "teaser_conten1_center"})
@@ -86,13 +86,13 @@ for last in lastest:
     lastest_array.append(x)
 
 
-# In[21]:
+# In[8]:
 
 
 lastest_array[0]
 
 
-# In[24]:
+# In[9]:
 
 
 with open('datanews.json') as json_file: 
