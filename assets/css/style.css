@@ -3907,8 +3907,9 @@ span.ui-slider-handle.ui-corner-all.ui-state-default:focus {
 
 /* line 1, ../../Arafath/CL/Cl November/224. Interior Design/HTML/scss/_insta.scss */
 .instagram_area {
-  padding-top: 180px;
-  padding-bottom: 150px;
+  padding-top: 70px;
+  padding-bottom: 10px;
+  background: #F5FBFF;
 }
 
 @media (max-width: 767px) {
@@ -4328,8 +4329,8 @@ span.ui-slider-handle.ui-corner-all.ui-state-default:focus {
 /* line 1, ../../Arafath/CL/Cl November/224. Interior Design/HTML/scss/_works.scss */
 .works_area {
   position: relative;
-  padding-top: 180px;
-  padding-bottom: 100px;
+  padding-top: 100px;
+  padding-bottom: 180px;
 }
 
 @media (max-width: 767px) {
@@ -4354,7 +4355,7 @@ span.ui-slider-handle.ui-corner-all.ui-state-default:focus {
   left: 0;
   top: 0;
   width: 100%;
-  height: 546px;
+  height: 250px;
   background: #F5FBFF;
   content: '';
 }
@@ -4371,9 +4372,10 @@ span.ui-slider-handle.ui-corner-all.ui-state-default:focus {
 
 /* line 30, ../../Arafath/CL/Cl November/224. Interior Design/HTML/scss/_works.scss */
 .works_area .work_info h3 {
-  font-size: 30px;
+  font-size: 50px;
   font-weight: 500;
   color: #001D38;
+  padding-top: 10px;
 }
 
 /* line 35, ../../Arafath/CL/Cl November/224. Interior Design/HTML/scss/_works.scss */
