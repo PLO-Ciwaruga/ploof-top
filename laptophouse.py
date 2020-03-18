@@ -32,8 +32,9 @@ products = []
 # In[5]:
 
 
-for title in obj.find_all('h2'):
+for title in obj.find_all('h2', class_='woocommerce-loop-product__title'):
     titles.append(title.text)
+print(titles)
 
 
 # In[6]:
@@ -80,19 +81,19 @@ for i in range(len(images_url)):
         })
 
 
-# In[10]:
+# In[11]:
 
 
 products
 
 
-# In[11]:
+# In[14]:
 
 
 import json
 
 
-# In[12]:
+# In[15]:
 
 
 f=open('laptophouse.json','w')
