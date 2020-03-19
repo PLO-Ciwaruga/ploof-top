@@ -13,6 +13,7 @@
     
         <!-- CSS here -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		<link rel="stylesheet" href="assets/css/aldy-style.css">
         <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
         <link rel="stylesheet" href="assets/css/magnific-popup.css">
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -121,7 +122,18 @@
     </div>
     <!-- slider_area_end -->
 
-
+	<section>
+        <div class="container-fluid">
+            <div class="row" id="product-place">
+                <div class="col-md-6" id="amazon-place">
+                    <center><img src="assets/images/amazon-logo.jpg" height="150px"></center>
+                </div>
+                <div class="col-md-6" id="lh-place">
+                    <center><img src="https://www.laptophouse.sg/wp-content/uploads/2019/12/laptophouse4.png" height="150px"></center>
+                </div>
+            </div>
+        </div>
+    </section>
 
      <!-- footer start -->
      <footer class="footer">
@@ -222,6 +234,61 @@
 </div>
 </footer>
 <!--/ footer end  -->
+
+	<script src="jquery-2.1.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.getJSON("amazon.json", function (data) {
+                var datanya = '';
+                $.each(data, function (key, value) {
+                    nama = value.name.split(',');
+                    if(key < 12 && key != 8 && key != 9)
+                    {
+                        datanya += '<div class="card mt-10 ">';
+                        datanya += '<div class="row">';
+                        datanya += '<div class="col-md-7">';
+                        datanya += '<img src = "' + value['img-url'] + '">';
+                        datanya += '</div>';
+                        datanya += '<div class="col-md-5 one">';
+                        datanya += '<h5>' + nama[0] + '</h5>';
+                        datanya += '<span id="price">' + value.price + '</span><br/>';
+                        datanya += '<span id="processor">' + value.spec['processor'] + '</span><br/>';
+                        datanya += '<span id="ram">' + value.spec['RAM'] + '</span><br/>';
+                        datanya += '<span id="graphic">' + value.spec['graphic'] + '</span><br/>';
+                        datanya += '<span id="storage">' + value.spec['storage'] + '</span><br/>';
+                        datanya += '</div>';
+                        datanya += '</div>';
+                        datanya += '</div>';
+                    }
+                });
+                $('#amazon-place').append(datanya);
+            });
+            $.getJSON("laptophouse.json", function (data) {
+                var datanya = '';
+                $.each(data, function (key, value) {
+                    if (key < 10) {
+                        datanya += '<div class="card mt-10 ">';
+                        datanya += '<div class="row">';
+                        datanya += '<div class="col-md-7 one">';
+                        datanya += '<h5>' + value.title + '</h5>';
+                        datanya += '<span id="price">' + value.price + '</span><br/>';
+                        datanya += '<span id="processor">' + value.processor + '</span><br/>';
+                        datanya += '<span id="ram">' + value.ram + '</span><br/>';
+                        datanya += '<span id="graphic">' + value.graphics + '</span><br/>';
+                        datanya += '<span id="storage">' + value.storage + '</span><br/>';
+                        datanya += '</div>';
+                        datanya += '<div class="col-md-5">';
+                        datanya += '<img src = "' + value['img_url'] + '" height="218px">';
+                        datanya += '</div>';
+                        datanya += '</div>';
+                        datanya += '</div>';
+                    }
+                });
+                $('#lh-place').append(datanya);
+            });
+        });
+    </script>
+
 </body>
 
 <!-- link that opens popup -->
